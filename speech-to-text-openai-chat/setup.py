@@ -38,7 +38,7 @@ setuptools.setup(
     ],
     entry_points={
         'console_scripts': [
-            'myapplication = speech-to-text-openai-chat.app:main',
+            'speech-to-text-openai-chat = speech-to-text-openai-chat.app:main',
         ],
     },
     python_requires=">=3.6",
