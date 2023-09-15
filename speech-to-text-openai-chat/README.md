@@ -42,6 +42,11 @@ sudo apt install python3-venv
  pip install -e .
 ```
 
+5. Update `API_KEY` variable in the `.env` file with your OpenAI Api Key.
+```bash
+API_KEY=<enter api key here>
+```
+
 Operations
 --------------
 #### Parameters
