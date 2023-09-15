@@ -1,21 +1,17 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
 import setuptools
 import subprocess
 import os
 import venv
-
-
 
 # Create directories for logs and conversations
 app_dir ='.'
 os.makedirs(f'{app_dir}/logs', exist_ok=True)
 os.makedirs(f'{app_dir}/conversations', exist_ok=True)
 
-# Create a .env file for your OPENAI KEYe
-with open(f'{app_dir}/.env', 'a') as f:
-    f.write('API_KEY=qwerty12345')
+# Create a .env file for your OPENAI KEY
+if not os.path.isfile(f'{app_dir}/.env'):
+    with open(f'{app_dir}/.env', 'a') as f:
+        f.write('API_KEY=qwerty12345')
     
 setuptools.setup(
     name="speech-to-text-openai-chat",

@@ -1,13 +1,85 @@
- 
+Speech To Text (OpenAI) Chat 
+=========
+## Setup Instructions (Mac OS)
 
- Setup Instructions
- ```
+
+
+Requirements
+------------
+
+#### Prerequisite
+
+ 1. Install Portaudio
+```bash
+brew install portaudio
+
+```
+2. Install Python venv
+```bash
+sudo apt install python3-venv
+
+```
+
+#### Installation Steps
+
+1. Create new virtual environment
+ ```bash
  python3 create_env.py
- # Linux or Mac
+ ```
+
+2. Activate virtual environment
+```bash
  source venv/bin/activate
- # Windows Command Prompt
- .\venv\Scripts\activate
- # Windows Powershell
- .\venv\Scripts\activate.ps1
+```
+
+3. Upgrade Pip and Setuptools Packages
+```bash
  pip install --upgrade pip setuptools
- pipvv install -e .
+```
+
+4. Install application
+```bash
+ pip install -e .
+```
+
+Operations
+--------------
+#### Parameters
+```bash
+Input Variables:
+
+- `-d, --duration`: (Required) [int]
+  - Set the lenght of time to listen to user voice input.
+- `-f --filename`: (Required) [str]
+  - Set the conversation file.
+
+```
+#### Command
+```bash
+speech-to-text-openai-chat --duration 10 --filename test.txt
+or
+speech-to-text-openai-chat -d 10 -f test.txt
+```
+
+
+Bugs
+--------------
+```bash
+SSL BUG
+Warning: 
+
+NotOpenSSLWarning: urllib3 v2.0 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+
+Fix:
+pip install urllib3==1.26.6
+```
+
+License
+-------
+
+BSD
+
+Author Information
+------------------
+
+Perrie Russell (@prussCoding)

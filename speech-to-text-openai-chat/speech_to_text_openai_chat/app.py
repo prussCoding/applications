@@ -17,8 +17,8 @@ from speech_recognition.exceptions import UnknownValueError
 
 # Setting Parameters agrs for program to run
 parser  = argparse.ArgumentParser( prog='Speech-to-Text and OpenAI Chat Interface',description='Process speech to text to be send to OpenAI chat for a response')
-parser.add_argument('-d', '--duration', dest='duration', type=int, help='set the lenght of time to listen to user voice input')
-parser.add_argument('-f', '--filename', dest='filename', type=str, help='set the conversation file.')
+parser.add_argument('-d', '--duration', dest='duration', type=int, help='set the lenght of time to listen to user voice input', required=True)
+parser.add_argument('-f', '--filename', dest='filename', type=str, help='set the conversation file.', required=True)
 
 # Setting Params from Parser Arguments
 params = parser.parse_args()
@@ -40,7 +40,7 @@ mymodule = 'myapplication'
 # Basic Configuration for Logging
 logging.basicConfig(
     format='%(asctime)s [%(levelname)s] -> %(message)s',
-    level=logging.DEBUG,
+    level=logging.INFO,
     force=True,
     handlers=[
         logging.FileHandler(f'logs/{mymodule}-{str(current_date)}.log'),
