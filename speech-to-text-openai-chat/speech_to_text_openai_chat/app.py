@@ -6,6 +6,7 @@ import time
 import openai
 import logging
 import argparse
+import pyttsx3
 import threading
 import speech_recognition as sr
 
@@ -36,6 +37,7 @@ conversation_dir: str = 'conversations'
 duration: int = params.duration
 filename: str = f'{conversation_dir}/{params.filename}'
 mymodule = 'myapplication'
+engine = pyttsx3.init()
 
 # Basic Configuration for Logging
 logging.basicConfig(
@@ -109,6 +111,11 @@ def speech_to_text(type, content, duration, mic) -> str:
     
     logging.debug(f'Module: myspeechtotext -> Method: speechtotext() -> Value: {text}')
 
+
+def text_to_speech(message):
+    engine.say(message)
+    engine.runAndWait()
+    
 
 def run(type, duration, content, mic):
     """
@@ -239,6 +246,8 @@ def main():
             
             chat.render()
             content = chat.response["choices"][0]["message"]["content"]
+            text_to_speech(content)
+            
             with open(filename, 'a') as f:
                 f.write(f'Response (chat):\n[{current_datetime}] {content}\n')
             logging.info(f'Chat Response: {content}')
