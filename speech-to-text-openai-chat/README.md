@@ -79,6 +79,14 @@ Fix:
 pip install urllib3==1.26.6
 ```
 
+```bash
+ERROR:
+AttributeError: 'super' object has no attribute 'init' BUG
+
+Fix:
+replace: self = super(NSSpeechDriver, self).init() comment this line , and add the following
+insert: self = objc.super(NSSpeechDriver, self).init()
+```
 License
 -------
 

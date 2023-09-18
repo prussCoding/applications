@@ -38,6 +38,13 @@ duration: int = params.duration
 filename: str = f'{conversation_dir}/{params.filename}'
 mymodule = 'myapplication'
 engine = pyttsx3.init()
+voices = engine.getProperty('voices')
+
+# Setting Properties for Pyttsx3
+engine.setProperty('rate', secrets['PYTTSX_RATE'])
+engine.setProperty('volume',secrets['PYTTSX_VOLUME'])
+engine.setProperty('voice',voices[secrets['PYTTSX_VOICE_ID']].id)
+
 
 # Basic Configuration for Logging
 logging.basicConfig(
@@ -113,6 +120,7 @@ def speech_to_text(type, content, duration, mic) -> str:
 
 
 def text_to_speech(message):
+    
     engine.say(message)
     engine.runAndWait()
     
@@ -251,6 +259,8 @@ def main():
             with open(filename, 'a') as f:
                 f.write(f'Response (chat):\n[{current_datetime}] {content}\n')
             logging.info(f'Chat Response: {content}')
+    
+    engine.stop()
 
   
 if __name__ == '__main__':
